@@ -41,7 +41,7 @@ def getSentimentText(user):
    resp = getMentions(getUserID(user))
    tweetdisplay = ''
    for tweet in resp:
-      tweetdisplay = tweetdisplay + tweet.text + '\n'
+      tweetdisplay = tweetdisplay + tweet.text + '\n' + '\n'
    return tweetdisplay
 
 
