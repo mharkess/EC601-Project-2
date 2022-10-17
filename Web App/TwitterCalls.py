@@ -1,3 +1,4 @@
+from getpass import getuser
 from urllib import response
 import tweepy
 import os
@@ -36,6 +37,14 @@ def getSentiment(tweet):
    print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
    return sentiment
 
+def getSentimentText(user):
+   resp = getMentions(getUserID(user))
+   tweetdisplay = ''
+   for tweet in resp:
+      tweetdisplay = tweetdisplay + tweet.text + '\n'
+   return tweetdisplay
+
+
 def sentimentList(list):
    sentiments = []
    for tweet in list:
@@ -44,12 +53,12 @@ def sentimentList(list):
 
 
 
-def getAvgSentiment(userID):
-   idelon = getUserID(userID)
+def getAvgSentiment(username):
+   idelon = getUserID(username)
    tweets = getMentions(idelon)
    sentiments = sentimentList(tweets)
    avgSentiment = 0
    for nlp in sentiments:
       avgSentiment += nlp.score
    avgSentiment = avgSentiment / MAX_RESULTS
-   return(avgSentiment)
+   return(str(avgSentiment))

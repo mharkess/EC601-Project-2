@@ -2,11 +2,28 @@
 
 {% block content %}
     <h1>{% block title %} Twitter Hashtag Sentiment {% endblock %}</h1>
+    <h3>Please enter the Twitter Username you would like to look up:</h3>
+    <form action="/userSentiment">
+        <label for="uname">Username:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <br>
+      <br>
     <div id="sentiment">
-        <p> Section to display sentiment analysis results</p>
+        {% if sentiment %}
+        <h2> The calculated sentiment analysis for this user is: {{sentiment}}</h2>
+        <br>
+        <br>
+        {%endif%}
     </div>
+    <div id = "sentiment-disp">
+        {% if disp %}
+        <h2> Recent Tweets with User tagged: </h2>
+        <br>
+        <textarea id="tweet-disp" name="w3review" rows="4" cols="50"> {{disp}} </textarea>
+        {%endif%}
+    </div>
+
     
-    <textarea id="w3review" name="w3review" rows="8" cols="50">
-        At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-        </textarea>
 {% endblock %}
